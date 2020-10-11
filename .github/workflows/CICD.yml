@@ -1,0 +1,28 @@
+name: Vue CICD
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install SSH Key
+      uses: shimataro/ssh-key-action@v2.0.3
+      with:
+          key: ${{ secrets.SSH_KEY }}
+          name: id_rsa
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+    - name: Use Node.js 14.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14.x
+    - run: npm ci
+    - run: npm run build
+    - run: rsync -r dist/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/${{ secrets.HOST }}
