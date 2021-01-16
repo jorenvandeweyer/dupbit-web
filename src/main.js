@@ -21,10 +21,13 @@ Vue.prototype.moment = (date, format) => {
 async function init() {
     const store = await createStore();
 
-    store.auth = await getAuth(store);
-    store.wsc = new WebSocketClient(store);
-
-    store.wsc.on('connected', console.log);
+    try {
+        store.auth = await getAuth(store);
+        store.wsc = new WebSocketClient(store);
+        store.wsc.on('connected', console.log);
+    } catch (e) {
+        console.log('not connected');
+    }
 
     createVueInstance(store);
 }
