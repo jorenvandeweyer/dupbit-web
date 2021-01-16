@@ -6,7 +6,7 @@
                 <a class="hover:text-gray-500" href="https://github.com/jorenvandeweyer">
                     <font-awesome-icon class="text-4xl" :icon="github"/>
                 </a>
-                <a class="hover:text-gray-500" href="https://linkedid.com/in/jorenvandeweyer">
+                <a class="hover:text-gray-500" href="https://linkedin.com/in/jorenvandeweyer">
                     <font-awesome-icon class="text-4xl" :icon="linkedIn"/>
                 </a>
                 <a class="hover:text-gray-500" href="mailto:info@dupbit.com">

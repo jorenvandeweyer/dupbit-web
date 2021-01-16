@@ -20,6 +20,24 @@
                     </div>
                 </div>
             </div>
+            <div
+                v-for="app in external"
+                :key="app.title"
+                class="w-full md:w-1/2 lg:w-1/3 p-4"
+            >
+                <div class="p-4 border border-white rounded">
+                    <h2 class="font-medium text-xl">{{ app.title }}</h2>
+                    <div class="h-20">{{ app.description }}</div>
+                    <div>
+                        <a
+                            class="inline-block bg-white rounded text-black py-1 px-2 mt-4 hover:bg-gray-400"
+                            :href="app.href" target="_blank"
+                        >
+                            Open
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -53,10 +71,19 @@ const apps = [
         portal: '/apps/calendar'
     }
 ];
+const external = [
+    {
+        title: 'Koken met Kat',
+        description: 'A website to keep my recipes',
+        href: 'https://kokenmetkat.be'
+    }
+];
+
 export default {
     data() {
         return {
             apps,
+            external
         };
     }
 };
