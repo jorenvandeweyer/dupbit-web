@@ -24,5 +24,5 @@ jobs:
       with:
         node-version: 14.x
     - run: npm ci
-    - run: npm run build
+    - run: npm run build --production
     - run: rsync -r dist/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/${{ secrets.HOST }}
